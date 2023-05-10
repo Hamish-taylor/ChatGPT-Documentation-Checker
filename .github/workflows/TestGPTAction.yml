@@ -1,0 +1,37 @@
+name: TestGPTAction
+on:
+  push:
+    branches:
+      - main
+env:
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY}}
+jobs:
+  docs-feedback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Find and process .md files
+        id: find-and-process-md
+        uses: Hamish-taylor/GPT-Docs-Checker@main
+        with:
+          spelling: true
+          general: true
+          grammar: true
+          temperature: 0.75
+               
+      - name: Print the result
+        run: |
+          echo "Markdown processing result:"
+          echo "$RESULT"
+        env:
+          RESULT: ${{ steps.find-and-process-md.outputs.result }}
