@@ -1,4 +1,4 @@
-name: 'Check docs with GPT'
+name: 'ChatGPT documentation reviewer'
 description: 'Finds all Markdown files and asks OpenAI GPT-3.5-turbo for things to improve'
 author: 'Hamish Taylor'
 branding:
