@@ -1,0 +1,25 @@
+name: 'Check docs with GPT'
+description: 'Finds all Markdown files and asks OpenAI GPT-3.5-turbo for things to improve'
+inputs:
+  temperature:
+    description: 'The temperature paramater for GPT-3.5'
+    required: false
+    default: 0.75
+  grammar:
+    description: 'Whether you want gpt to try and check grammar'
+    required: false
+    default: true
+  spelling:
+    description: 'Whether you want gpt to try and check spelling'
+    required: false
+    default: true
+  general:
+    description: 'Whether you want gpt to try and give general tips and improvements'
+    required: false
+    default: true
+outputs:
+   result:
+    description: 'The GPT responses for each .md file'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
