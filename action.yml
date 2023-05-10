@@ -1,5 +1,9 @@
 name: 'Check docs with GPT'
 description: 'Finds all Markdown files and asks OpenAI GPT-3.5-turbo for things to improve'
+author: 'Hamish Taylor'
+branding:
+  icon: 'align-left'
+  color: 'blue'
 inputs:
   temperature:
     description: 'The temperature paramater for GPT-3.5'
